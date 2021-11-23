@@ -5,6 +5,6 @@ Integrated django celery to perform scheduled task
 Environment varibale keeps the secret keys and credentials like email address or password safe in production.
 
 ### Installing celery
-'''
+```
 pip install celery
-'''
+```
