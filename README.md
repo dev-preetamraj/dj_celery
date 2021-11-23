@@ -8,3 +8,11 @@ Environment varibale keeps the secret keys and credentials like email address or
 ```
 pip install celery
 ```
+#### Run Celery worker
+```
+celery -A dj_celery_pro.celery worker --pool=solo -l info
+```
+#### Run django-celery-beat
+```
+celery -A dj_celery_pro beat -l info
+```

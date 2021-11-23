@@ -3,6 +3,7 @@ from datetime import timezone
 import os
 from celery import Celery
 from django.conf import settings
+from celery.schedules import crontab
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dj_celery_pro.settings')
 
@@ -15,7 +16,11 @@ app.config_from_object(settings, namespace='CELERY')
 
 # Celery beat settings
 app.conf.beat_schedule = {
-    
+    'send-mail-on-mon-tue': {
+        'task': 'send_mail_app.tasks.send_mail_func',
+        'schedule': crontab(hour=18, minute=39, day_of_week=2) # day_of_week=2 for tuesday
+        # 'args': 
+    }
 }
 
 app.autodiscover_tasks()
